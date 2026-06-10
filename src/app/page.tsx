@@ -1,6 +1,9 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { LocalBusinessSchema } from "@/components/shared/SchemaOrg";
+import { FAQSchema, DEFAULT_FAQS } from "@/components/shared/FAQSchema";
+import { CallbackForm } from "@/components/shared/CallbackForm";
+import { PriceCalculator } from "@/components/shared/PriceCalculator";
 
 export default function HomePage() {
   const projectImages = [
@@ -41,6 +44,7 @@ export default function HomePage() {
   return (
     <>
       <LocalBusinessSchema />
+      <FAQSchema items={DEFAULT_FAQS} />
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
@@ -163,6 +167,63 @@ export default function HomePage() {
                   <p className="mt-2 text-sm text-walnut-500">{benefit.desc}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ + Calculator + Callback Section */}
+        <section className="bg-walnut-50 py-16 md:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+              {/* FAQ */}
+              <div>
+                <h2 className="font-serif text-3xl font-bold tracking-tight text-walnut-900 sm:text-4xl">
+                  Частые вопросы
+                </h2>
+                <p className="mt-2 text-base text-walnut-500">
+                  Ответы на самые популярные вопросы о мебели на заказ
+                </p>
+                <div className="mt-8 space-y-4">
+                  {DEFAULT_FAQS.map((faq, idx) => (
+                    <details
+                      key={idx}
+                      className="group rounded-xl border border-walnut-100 bg-white transition-shadow hover:shadow-sm"
+                    >
+                      <summary className="flex cursor-pointer items-center justify-between px-5 py-4 text-sm font-medium text-walnut-800">
+                        {faq.question}
+                        <svg
+                          className="h-4 w-4 shrink-0 text-walnut-400 transition-transform group-open:rotate-180"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <path d="M6 9l6 6 6-6" />
+                        </svg>
+                      </summary>
+                      <p className="border-t border-walnut-100 px-5 py-4 text-sm leading-relaxed text-walnut-500">
+                        {faq.answer}
+                      </p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+
+              {/* Calculator + Callback */}
+              <div className="space-y-8">
+                <PriceCalculator />
+                <div className="rounded-xl border border-walnut-100 bg-white p-6 shadow-sm">
+                  <h3 className="font-serif text-lg font-semibold text-walnut-800">
+                    Заказать звонок
+                  </h3>
+                  <p className="mt-1 text-sm text-walnut-500">
+                    Оставьте номер — мы перезвоним в течение часа
+                  </p>
+                  <div className="mt-5">
+                    <CallbackForm />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

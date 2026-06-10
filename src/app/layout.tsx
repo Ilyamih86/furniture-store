@@ -63,6 +63,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { Analytics } from "@/components/shared/Analytics";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -73,7 +75,13 @@ export default function RootLayout({
       lang="ru"
       className={`${inter.variable} ${playfairDisplay.variable} h-full`}
     >
+      <head>
+        <link rel="manifest" href="/manifest" />
+        <meta name="theme-color" content="#6f5539" />
+        <meta name="format-detection" content="telephone=yes" />
+      </head>
       <body className="min-h-full flex flex-col antialiased">
+        <Analytics />
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { projects, getProjectsByCategory, categoryMeta, getCategoryName } from "@/data/projects";
+import { ProductSchema } from "@/components/shared/ProjectSchema";
+import { BreadcrumbSchema } from "@/components/shared/BreadcrumbSchema";
+import { ShareButtons } from "@/components/shared/ShareButtons";
 
 export const metadata: Metadata = {
   title: "Каталог мебели на заказ в Краснодаре",
@@ -36,9 +39,24 @@ export default async function CatalogPage({
     ? categoryMeta[currentCategory]?.description
     : "Все реализованные проекты — от кухонь до детских комнат";
 
+  const breadcrumbItems = [
+    { name: "Главная", href: "/" },
+    ...(currentCategory
+      ? [
+          { name: "Каталог", href: "/catalog" },
+          { name: categoryMeta[currentCategory]?.name ?? currentCategory, href: `/catalog?category=${currentCategory}` },
+        ]
+      : [{ name: "Каталог", href: "/catalog" }]),
+  ];
+
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      {/* Breadcrumbs */}
+    <>
+      <BreadcrumbSchema items={breadcrumbItems} />
+      {filteredProjects.map((project) => (
+        <ProductSchema key={project.id} project={project} />
+      ))}
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        {/* Breadcrumbs */}
       <nav className="mb-6 text-sm text-walnut-500">
         <Link href="/" className="hover:text-walnut-700">Главная</Link>
         <span className="mx-2">/</span>
@@ -191,6 +209,13 @@ export default async function CatalogPage({
                         ))}
                       </div>
                     )}
+                    {/* Share */}
+                    <div className="mt-4 border-t border-walnut-100 pt-3">
+                      <ShareButtons
+                        title={project.name}
+                        description={project.area ? `Площадь: ${project.area}` : project.features?.[0]}
+                      />
+                    </div>
                   </div>
                 </div>
               ))}
@@ -208,5 +233,6 @@ export default async function CatalogPage({
         </div>
       </div>
     </div>
+    </>
   );
 }
