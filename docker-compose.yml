@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: furniture-store-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: furniture_user
+      POSTGRES_PASSWORD: furniture_password
+      POSTGRES_DB: furniture_store
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: furniture-store-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:

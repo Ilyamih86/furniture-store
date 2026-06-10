@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Theme: Furniture Store
+   Color palette: Neutrals (white, gray, beige) + Warm Walnut accent
+   Fonts: Inter (body), Playfair Display (headings)
+   ============================================================ */
+
+:root {
+  /* Brand Colors */
+  --color-walnut-50: #faf6f0;
+  --color-walnut-100: #f0e8d8;
+  --color-walnut-200: #e0d0b8;
+  --color-walnut-300: #c8b090;
+  --color-walnut-400: #a88860;
+  --color-walnut-500: #8b6f4e;
+  --color-walnut-600: #6f5539;
+  --color-walnut-700: #5a442e;
+  --color-walnut-800: #4a3826;
+  --color-walnut-900: #3d2e20;
+
+  /* Background & Surface */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #faf6f0;
+  --color-bg-tertiary: #f5f0ea;
+
+  /* Text */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #6b6b6b;
+  --color-text-tertiary: #9ca3af;
+
+  /* UI */
+  --color-border: #e5e5e5;
+  --color-border-light: #f0f0f0;
+}
+
+@theme inline {
+  --color-background: var(--color-bg-primary);
+  --color-foreground: var(--color-text-primary);
+  --color-walnut-50: var(--color-walnut-50);
+  --color-walnut-100: var(--color-walnut-100);
+  --color-walnut-200: var(--color-walnut-200);
+  --color-walnut-300: var(--color-walnut-300);
+  --color-walnut-400: var(--color-walnut-400);
+  --color-walnut-500: var(--color-walnut-500);
+  --color-walnut-600: var(--color-walnut-600);
+  --color-walnut-700: var(--color-walnut-700);
+  --color-walnut-800: var(--color-walnut-800);
+  --color-walnut-900: var(--color-walnut-900);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+}
+
+/* Base Styles */
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-walnut-200);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-walnut-300);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-walnut-100);
+  color: var(--color-walnut-800);
+}
+
+/* Focus Styles */
+*:focus-visible {
+  outline: 2px solid var(--color-walnut-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Utility Classes */
+.font-serif {
+  font-family: var(--font-serif);
+}
