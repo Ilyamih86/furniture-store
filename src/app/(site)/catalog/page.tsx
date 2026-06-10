@@ -3,8 +3,9 @@ import Link from "next/link";
 import { projects, getProjectsByCategory, categoryMeta, getCategoryName } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "Каталог",
-  description: "Каталог мебели на заказ. Кухни, шкафы-купе, гардеробные, корпусная мебель. Индивидуальное изготовление по вашим размерам.",
+  title: "Каталог мебели на заказ в Краснодаре",
+  description:
+    "Каталог мебели на заказ в Краснодаре. Кухни, шкафы-купе, гардеробные, корпусная мебель. Индивидуальное изготовление по вашим размерам. Более 20 реализованных проектов.",
 };
 
 const CATEGORIES = [

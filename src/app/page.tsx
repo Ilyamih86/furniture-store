@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { LocalBusinessSchema } from "@/components/shared/SchemaOrg";
 
 export default function HomePage() {
   const projectImages = [
@@ -39,6 +40,7 @@ export default function HomePage() {
 
   return (
     <>
+      <LocalBusinessSchema />
       <Header />
       <main className="flex-1">
         {/* Hero Section */}
